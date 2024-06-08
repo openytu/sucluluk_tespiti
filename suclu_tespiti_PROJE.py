@@ -5,12 +5,14 @@ import numpy as np
 import math
 import face_recognition
 
-erenImage= face_recognition.load_image_file("resimler/resim_2.jpg")
-yunusemreImage = face_recognition.load_image_file("resimler/yunus_emre.jpg")
-erenImageEncodings=face_recognition.face_encodings(erenImage)[0]
-yunusemreEncodings=face_recognition.face_encodings(yunusemreImage)[0]
-encodingList= [erenImageEncodings, yunusemreEncodings]
-nameList=["Eren", "Yunus Emre"]
+resim_1_path = ""
+resim_2_path = ""
+resim1Image= face_recognition.load_image_file(resim_1_path)
+resim2Image = face_recognition.load_image_file(resim_2_path)
+resim1ImageEncodings=face_recognition.face_encodings(resim1Image)[0]
+resim2ImageEncodings=face_recognition.face_encodings(resim2Image)[0]
+encodingList= [resim1ImageEncodings, resim2ImageEncodings]
+nameList=["Şüpheli 1", "Şüpheli 2"]
 
 def calculate_FPS(cTime, ptime):
     # FPS hesabı
@@ -32,7 +34,7 @@ def resim_cek(name_o, frame):
             name=nameList[matchedIndex]    
         
         cv2.rectangle(frame, (leftx, topy), (rightx, bottomy), (0, 255, 255), 3)
-        img_path = "PROJELER/results" + "/" + name + "_" + name_o
+        img_path = "your_results_path" + "/" + name + "_" + name_o
         cv2.imwrite(img_path, detectedFaces)
         print(f"{name} adlı şüphelinin görüntüsü {img_path} olarak kaydedildi.")    
 
