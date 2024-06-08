@@ -1,0 +1,1 @@
+# sucluluk_tespiti
